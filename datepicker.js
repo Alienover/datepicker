@@ -1,5 +1,6 @@
 (function () {
   var datepicker = {};
+  var ele = {};
 
   datepicker.getMonthData = function(year, month, thisDate) {
 
@@ -41,13 +42,12 @@
   };
 
   datepicker.ui =  {
-    $: document.querySelector('.datepicker'),
     init: function (year, month, date) {
       this.build();
       this.getDate(year, month, date);
     },
     build: function() {
-      var $ = this.$;
+      var $ = ele;
       var initial = '';
       initial +=   '<div class="ui-datepicker-wrapper">';
       initial +=     '<div class="ui-datepicker-header">';
@@ -77,7 +77,7 @@
       $.innerHTML = initial;
     },
     getDate: function (year, month, date) {
-      var $ = this.$;
+      var $ = ele;
       var monthData = datepicker.getMonthData(year, month, date);
       var thisDate = monthData.thisDate;
 
@@ -100,10 +100,10 @@
   };
 
   datepicker.bindEvents = function () {
-    var $ = document.querySelector('.ui-datepicker-wrapper');
-    $.addEventListener('click', function (e) {
-      var currYear = Number($.querySelector('.ui-datepicker-display-year').text);
-      var currMonth = Number($.querySelector('.ui-datepicker-display-month').text);
+    var wrapper = document.querySelector('.ui-datepicker-wrapper');
+    wrapper.addEventListener('click', function (e) {
+      var currYear = Number(wrapper.querySelector('.ui-datepicker-display-year').text);
+      var currMonth = Number(wrapper.querySelector('.ui-datepicker-display-month').text);
       var rel = e.target.dataset.rel;
       switch (true) {
         case /prev/.test(rel):
@@ -123,6 +123,8 @@
   };
 
   datepicker.init = function (object) {
+    ele = object.ele || '.datepicker';
+    ele = document.querySelector(ele);
     var date = (object.date) ? object.date.split('-') : "";
     this.ui.init(date[0], date[1], date[2]);
     this.bindEvents();
