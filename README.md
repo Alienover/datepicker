@@ -4,7 +4,7 @@
 
 项目演示: [DEMO](https://alienover.github.io/datepicker/)
 
-### LOG
+## LOG
 
 *2017-12-13*
   * 添加了前端代码自动化构建工具`gulp`
@@ -22,12 +22,12 @@
   });
 ```
 
-### Stylesheet
+## Stylesheet
 
-#### Width
+### Width
 `datepicker`的宽度,是随其父容器的宽度变化而变化的
 
-#### Height
+### Height
 `datepicker`的高度,分几部分,其中:
 
 *Header part*
@@ -51,7 +51,7 @@
   }
 ```
 
-#### Color
+### Color
 *Header part*
 ``` css
   .ui-datepicker-wrapper .ui-datepicker-header {
@@ -86,13 +86,13 @@
 ```
 
 
-### Method
+## Method
 
 ``` html
   <link rel="stylesheet" href="/css/datepicker.css">
 ```
 
-#### date.gePickedDate(symbol)
+### date.gePickedDate(symbol)
 ``` javascript
   /**
     * @desc 用于获取当前被选中的日期
